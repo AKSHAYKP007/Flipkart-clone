@@ -3,6 +3,7 @@ import { NumericFormat } from 'react-number-format';
 
 const Product = ({product}) => {
   const rating = Math.floor(Math.random() * (6 - 1)) + 1;
+  const p='hello'
   return (
     <div className='text-xs w-1/5 bg-white m-2 p-2 flex flex-col items-center justify-evenly'>
         <p>{product.title}</p>
