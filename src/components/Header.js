@@ -2,7 +2,11 @@ import React from 'react'
 import { MagnifyingGlassIcon} from '@heroicons/react/24/outline'
 import {  ShoppingCartIcon} from '@heroicons/react/24/solid'
 
+import { useSelector } from 'react-redux'
+
 const Header = () => {
+  const items = useSelector((state) => state.basketReducer.items)
+
   return (
     <div className='bg-color flex items-center justify-around '>
         
@@ -19,6 +23,7 @@ const Header = () => {
         <div className='flex text-white cursor-pointer'>   
         <ShoppingCartIcon className='h-6'/>
         <p className='font-w '>Cart</p>
+        <center><p className='relative bottom-1 right-11 bg-orange-500 w-4 h-4 text-sm rounded-full'>{items.length}</p></center>
         </div>
     </div>
   )
