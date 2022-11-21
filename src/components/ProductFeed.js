@@ -7,7 +7,7 @@ const ProductFeed = ({products}) => {
         
     { products.map((product)=>{
         return(
-       <Product key={product.id} product={product} />
+       <Product key={product.id} id={product.id} title={product.title} image={product.image} price={product.price} />
     )})}
     </div>
   )
