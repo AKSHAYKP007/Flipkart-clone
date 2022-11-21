@@ -1,11 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
+import { NumericFormat } from "react-number-format";
 import Header from "./Header";
 import CheckoutProduct from "./CheckoutProduct";
 
 const Checkout = () => {
   const items = useSelector((state) => state.basketReducer.items);
+  var sum = 0;
+  items.map((item) => {
+    return (sum = sum + item.price);
+  });
 
   return (
     <>
@@ -31,9 +35,41 @@ const Checkout = () => {
             })}
           </div>
         </div>
-        <div className="bg-white w-1/4 h-1/2 m-2">
-          <h1 className="border-b p-2">PRICE DETAILS</h1>
-          <p className="p-2">Total Amount : 0</p>
+        <div
+          className={` bg-white w-1/4 h-1/2 mt-2 ${
+            items.length === 0 && "hidden"
+          }`}
+        >
+          <h1 className="border-b py-3 px-5 text-slate-500 font-semibold">
+            PRICE DETAILS
+          </h1>
+          <div className="mx-5">
+            <div className="flex my-5 justify-between">
+              <div>Price </div>
+              <NumericFormat
+                value={sum}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"$"}
+              />
+            </div>
+            <div className="flex justify-between my-5">
+              <div> Discount </div> <div className="text-green-500"> - 0 </div>
+            </div>
+            <div className="flex my-5 justify-between">
+              <div>Delivery charges </div>{" "}
+              <div className="text-green-500"> FREE </div>
+            </div>
+            <div className="flex my-5 justify-between font-semibold border-t py-2">
+              <div>Total amount </div>
+              <NumericFormat
+                value={sum}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"$"}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

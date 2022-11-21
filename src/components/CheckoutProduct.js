@@ -27,7 +27,7 @@ const CheckoutProduct = ({ id, title, image, price }) => {
       <div className="flex">
         <img className="h-28 w-28" src={image} alt="" />
         <div className="m-3">
-          <p>{title}</p>
+          <p className="mb-5">{title}</p>
           <NumericFormat
             className="font-bold"
             value={price}
